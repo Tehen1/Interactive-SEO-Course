@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { type Question } from '../types';
 import { CheckIcon, XIcon } from './icons';
@@ -27,7 +26,6 @@ const Quiz: React.FC<QuizProps> = ({ questions, onAnswer, userAnswers }) => {
     <div className="space-y-6">
       {questions.map((q, index) => {
         const userAnswer = userAnswers[q.id];
-        const correctOption = q.options.find(o => o.isCorrect)?.text;
 
         return (
           <div key={q.id} className="p-5 bg-base-900/50 rounded-lg border border-white/10">
@@ -40,11 +38,15 @@ const Quiz: React.FC<QuizProps> = ({ questions, onAnswer, userAnswers }) => {
                 const isCorrect = option.isCorrect;
                 
                 let optionClass = "border-gray-600 hover:border-brand-primary";
+                let icon = null;
+
                 if (userAnswer) {
                   if (isCorrect) {
                     optionClass = "border-green-500 bg-green-500/10 text-white";
+                    icon = <CheckIcon className="w-5 h-5 text-green-500" />;
                   } else if (isSelected) {
                     optionClass = "border-red-500 bg-red-500/10 text-white";
+                    icon = <XIcon className="w-5 h-5 text-red-500" />;
                   } else {
                      optionClass = "border-gray-700 opacity-60";
                   }
@@ -58,7 +60,7 @@ const Quiz: React.FC<QuizProps> = ({ questions, onAnswer, userAnswers }) => {
                     className={`w-full text-left p-3 border-2 rounded-md transition-all flex justify-between items-center ${optionClass} disabled:cursor-default`}
                   >
                     <span>{option.text}</span>
-                    {userAnswer && isSelected && (isCorrect ? <CheckIcon className="w-5 h-5 text-green-500" /> : <XIcon className="w-5 h-5 text-red-500" />)}
+                    {icon}
                   </button>
                 );
               })}

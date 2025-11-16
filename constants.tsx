@@ -780,6 +780,32 @@ export const COURSE_DATA: Level[] = [
                     ]
                 }
             ]
+        },
+        {
+            id: '5.5',
+            title: 'Conclusion & Prochaines Étapes',
+            lessons: [
+                {
+                    id: '5.5.1',
+                    title: 'Synthèse et Apprentissage Continu',
+                    duration: 15,
+                    content: "Félicitations ! Vous avez terminé ce cours interactif sur le SEO. Vous avez acquis des bases solides sur les trois piliers : la technique, le contenu et le netlinking. Le SEO est un domaine en constante évolution. Pour rester à jour, suivez les blogs d'experts (ex: Ahrefs, Moz, Search Engine Journal), participez à des webinaires et, surtout, pratiquez ! Créez un site personnel, analysez vos concurrents et testez différentes stratégies. La clé du succès est la curiosité et l'expérimentation continue.",
+                    questions: [
+                        {
+                            id: 'q5.5.1.1',
+                            question: "Quelle est la compétence la plus importante pour un expert SEO sur le long terme ?",
+                            options: [
+                                { text: "La maîtrise parfaite des outils payants", isCorrect: false },
+                                { text: "La capacité à s'adapter et à apprendre en continu", isCorrect: true },
+                                { text: "La rédaction de plus de 2000 mots par article", isCorrect: false },
+                                { text: "L'obtention rapide de milliers de backlinks", isCorrect: false },
+                            ],
+                            explanation: "Le SEO est un marathon, pas un sprint. Les algorithmes de Google changent constamment. La capacité à s'adapter, à tester de nouvelles approches et à ne jamais cesser d'apprendre est ce qui différencie un bon référenceur d'un expert.",
+                            points: 20
+                        }
+                    ]
+                }
+            ]
         }
     ]
   }

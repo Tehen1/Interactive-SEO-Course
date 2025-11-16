@@ -1,6 +1,7 @@
 import React from 'react';
 import { type Lesson } from '../types';
 import Quiz from './Quiz';
+import { TrophyIcon } from './icons';
 
 interface LessonViewProps {
   lesson: Lesson;
@@ -10,10 +11,14 @@ interface LessonViewProps {
   userAnswers: Record<string, string>;
   isFirst: boolean;
   isLast: boolean;
+  userScore: number;
+  totalPoints: number;
+  onReset: () => void;
 }
 
-const LessonView: React.FC<LessonViewProps> = ({ lesson, onNext, onPrevious, onAnswer, userAnswers, isFirst, isLast }) => {
+const LessonView: React.FC<LessonViewProps> = ({ lesson, onNext, onPrevious, onAnswer, userAnswers, isFirst, isLast, userScore, totalPoints, onReset }) => {
   const allQuestionsAnswered = lesson.questions.every(q => userAnswers[q.id]);
+  const isCourseComplete = isLast && allQuestionsAnswered;
 
   return (
     <div className="max-w-3xl mx-auto">
@@ -55,6 +60,17 @@ const LessonView: React.FC<LessonViewProps> = ({ lesson, onNext, onPrevious, onA
           </button>
         </div>
       </div>
+      
+      {isCourseComplete && (
+        <div className="mt-8 p-8 bg-gradient-to-br from-brand-secondary to-emerald-700 rounded-xl text-white text-center shadow-2xl border border-white/20">
+          <TrophyIcon className="w-16 h-16 mx-auto mb-4 text-yellow-300" />
+          <h3 className="text-3xl font-bold">Félicitations, vous avez terminé le cours !</h3>
+          <p className="mt-2 text-emerald-200">Vous avez démontré une excellente compréhension des fondamentaux du SEO.</p>
+          <div className="mt-6 bg-base-900/30 inline-block px-6 py-3 rounded-full">
+            <p className="text-xl font-semibold">Score Final : <span className="text-yellow-300">{userScore} / {totalPoints}</span> points</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -197,6 +197,9 @@ const App: React.FC = () => {
               userAnswers={answers}
               isFirst={isFirstLesson}
               isLast={isLastLesson}
+              userScore={userScore}
+              totalPoints={totalPoints}
+              onReset={handleResetProgress}
             />
           ) : (
             <div className="flex items-center justify-center h-full">
